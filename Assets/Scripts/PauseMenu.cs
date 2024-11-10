@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour {
     public void LoadMenu()
     {
         Debug.Log("Loading menu...");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Kiarra Scene");
     }
     public void QuitGame()
     {
