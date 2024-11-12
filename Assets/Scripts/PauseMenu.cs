@@ -14,15 +14,16 @@ public class PauseMenu : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
-    {
+        {
+            Debug.Log("Backspace was pressed");
             if (GameIsPaused)
-        {
-            Resume();
-        }else
-        {
-            Pause();
+            {
+                Resume();
+            }else
+            {
+                Pause();
+            }
         }
-    }
     }
 
    public void Resume ()
