@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Kiarra Scene.unity
+    guid: 5568978f269180f42b5dda70245a2447
+  - enabled: 1
+    path: Assets/Scenes/Kyle Scene.unity
+    guid: 061da5e1f20aad94e952cf10256331e4
   m_configObjects: {}
