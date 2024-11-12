@@ -5,20 +5,31 @@ using TMPro;
 
 public class Diologue : MonoBehaviour
 {
-    public TextMeshProUGUI DialogueText;
-    public string[] Sentences;
-    private int Index = 0;
-    public float DialogueSpeed;
+    public TextMeshProUGUI dialogueText;
+    public string[] sentences;
+    private int index = 0;
+    public float dialogueSpeed;
+    public bool writing;
 
-    void Start()
+    void OnEnable()
     {
-        
+        NextSentence();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (!writing && index == sentences.Length)
+            {
+                Debug.Log("shutdown dialogue");
+                dialogueText.text = "";
+                index = 0;
+                writing = false;
+                gameObject.SetActive(false);
+                return;
+            }
+
             NextSentence();
         }
     }
@@ -26,23 +37,30 @@ public class Diologue : MonoBehaviour
 
     void NextSentence()
     {
-        if(Index <= Sentences.Length - 1)
+        if (!writing)
         {
-            DialogueText.text = "";
-            StartCoroutine(WriteSentence());
+            if (index <= sentences.Length - 1)
+            {
+                dialogueText.text = "";
+                writing = true;
+                StartCoroutine(WriteSentence());
+            }
         }
     }
 
 
     IEnumerator WriteSentence()
     {
-        foreach(char Character in Sentences[Index].ToCharArray())
+        // Debug.Log("writing");
+        
+        foreach(char Character in sentences[index].ToCharArray())
         {
-            DialogueText.text += Character;
-            yield return new WaitForSeconds(DialogueSpeed);
+            dialogueText.text += Character;
+            yield return new WaitForSeconds(dialogueSpeed);
 
         }
-        Index++;
+        index++;
+        writing = false;
     }
 
 }
