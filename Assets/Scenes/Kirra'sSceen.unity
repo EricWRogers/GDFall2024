@@ -420,9 +420,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548839218927369267, guid: 530443cdd0ad3c4478b766c90d7ffde7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 1625521096649009426, guid: 530443cdd0ad3c4478b766c90d7ffde7, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625521096649009426, guid: 530443cdd0ad3c4478b766c90d7ffde7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959623666386485882, guid: 530443cdd0ad3c4478b766c90d7ffde7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6694334827495895841, guid: 530443cdd0ad3c4478b766c90d7ffde7, type: 3}
       propertyPath: m_Pivot.x
