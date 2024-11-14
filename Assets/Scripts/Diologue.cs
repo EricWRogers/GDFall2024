@@ -10,6 +10,7 @@ public class Diologue : MonoBehaviour
     private int index = 0;
     public float dialogueSpeed;
     public bool writing;
+    public Interact other;
 
     void OnEnable()
     {
@@ -26,7 +27,8 @@ public class Diologue : MonoBehaviour
                 dialogueText.text = "";
                 index = 0;
                 writing = false;
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
+                other.EndDialogue();
                 return;
             }
 
