@@ -18,7 +18,7 @@ public class Diologue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             if (!writing && index == sentences.Length)
             {
