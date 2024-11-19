@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Movement speed of the player
+    public float moveSpeed = 5f; //Movement speed of the player
     public Sprite Lady_Standing_1;    
     public Sprite walkRightSprite;  
     public Sprite walkLeftSprite;   
@@ -17,14 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Get the Rigidbody2D and SpriteRenderer components attached to the player
+        //Get the Rigidbody2D and SpriteRenderer components attached to the player
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        // Get player input (WASD or Arrow keys)
+        //Get player input (WASD or Arrow keys)
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -35,10 +35,12 @@ public class PlayerMovement : MonoBehaviour
         if (movement.x > 0) //Move right
         {
             spriteRenderer.sprite = walkRightSprite;
+            spriteRenderer.flipX = false;
         }
         else if (movement.x < 0) //Move left
         {
             spriteRenderer.sprite = walkLeftSprite;
+            spriteRenderer.flipX = true;
         }
         else if (movement.y > 0) //Move up
         {
