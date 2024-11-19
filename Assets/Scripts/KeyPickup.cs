@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  // Required for UI components
+using TMPro;
 
 public class KeyPickup : MonoBehaviour
 {
     public bool hasKey = false;  // Tracks whether the player has picked up the key
-    public Text pickupMessageText;  // Reference to the UI Text for feedback
-    public Text interactionText;    // Reference to the UI Text for interaction feedback
+    public TMP_Text pickupMessageText;  // Reference to the UI Text for feedback
+    public TMP_Text interactionText;    // Reference to the UI Text for interaction feedback
     public float pickupRange = 3f;  // The distance at which the player can pick up the key
 
     private GameObject player;  // Reference to the player GameObject
@@ -37,7 +38,7 @@ public class KeyPickup : MonoBehaviour
                 // Show a message to prompt the player to press 'E' to pick up the key
                 if (pickupMessageText != null)
                 {
-                    pickupMessageText.text = "Press E to pick up the key";
+                    pickupMessageText.text = "Press E to pick up";
                 }
 
                 // Wait for the player to press 'E'
@@ -67,6 +68,12 @@ public class KeyPickup : MonoBehaviour
         if (pickupMessageText != null)
         {
             pickupMessageText.text = "Key picked up!";
+        }
+
+        // Hide the prompt after the door is opened
+        if (pickupMessageText != null)
+        {
+            pickupMessageText.text = "";
         }
 
         // Deactivate the key object so it no longer interferes with the player

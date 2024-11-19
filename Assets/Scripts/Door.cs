@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  // Required for UI components
+using TMPro;
 
 public class Door : MonoBehaviour
 {
     public KeyPickup playerKeyScript;  // Reference to the player's KeyPickup script
     public GameObject doorObject;  // The door object itself (it can be a door model, etc.)
     public bool isDoorOpen = false;  // Whether the door is open or closed
-    public Text interactionText;  // Reference to the UI Text for interaction instructions
+    public TMP_Text interactionText;  // Reference to the UI Text for interaction instructions
     public float interactionRange = 3f;  // The distance at which the player can interact with the door
 
     private BoxCollider2D doorCollider;  // To hold reference to the door's 2D collider
@@ -20,7 +21,7 @@ public class Door : MonoBehaviour
 
         if (interactionText != null)
         {
-            interactionText.text = "";  // Hide the text initially
+            interactionText.text = "Press E To Open Door";  // Hide the text initially
         }
     }
 
