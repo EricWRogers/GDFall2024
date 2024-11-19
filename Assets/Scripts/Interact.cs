@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interact : MonoBehaviour
 {
-    public GameObject clue;
+    public string scene;
+    public GameObject button;
     public GameObject dialogueBox;
 
     // Start is called before the first frame update
@@ -16,9 +18,13 @@ public class Interact : MonoBehaviour
     void OnMouseDown() 
     { 
         Debug.Log("Sprite Clicked");
-        if (clue.tag == "Interactable")
+        if (button.tag == "Clue")
         {
             dialogueBox.SetActive(true);
+        }
+        if (button.tag == "Move")
+        {
+            SceneManager.LoadScene(scene);
         }
     }
 
