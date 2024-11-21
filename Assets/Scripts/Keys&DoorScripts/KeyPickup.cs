@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;  // Required for UI components
+using TMPro;
 
 public class KeyPickup : MonoBehaviour
 {
     public bool hasKey = false;  // Tracks whether the player has picked up the key
-    public Text pickupMessageText;  // Reference to the UI Text for feedback
-    public Text interactionText;    // Reference to the UI Text for interaction feedback
+    public TMP_Text pickupMessageText;  // Reference to the UI Text for feedback
+    public TMP_Text interactionText;    // Reference to the UI Text for interaction feedback
     public float pickupRange = 3f;  // The distance at which the player can pick up the key
 
     private GameObject player;  // Reference to the player GameObject
+
+    // New addition: Reference to the Image that will appear after the key is picked up
+    public Image keyImage;  
 
     private void Start()
     {
@@ -18,6 +22,12 @@ public class KeyPickup : MonoBehaviour
         if (pickupMessageText != null)
         {
             pickupMessageText.text = "";  // Hide any pickup message at the start
+        }
+
+        // Make sure the key image is hidden at the start
+        if (keyImage != null)
+        {
+            keyImage.enabled = false;  // Hide the key image initially
         }
 
         // Find the player in the scene
@@ -37,7 +47,7 @@ public class KeyPickup : MonoBehaviour
                 // Show a message to prompt the player to press 'E' to pick up the key
                 if (pickupMessageText != null)
                 {
-                    pickupMessageText.text = "Press E to pick up the key";
+                    pickupMessageText.text = "Press E to pick up";
                 }
 
                 // Wait for the player to press 'E'
@@ -66,7 +76,13 @@ public class KeyPickup : MonoBehaviour
         // Update the message to show key picked up
         if (pickupMessageText != null)
         {
-            pickupMessageText.text = "Key picked up!";
+            pickupMessageText.text = "";
+        }
+
+        // Show the key image in the UI
+        if (keyImage != null)
+        {
+            keyImage.enabled = true;  // Make the key image visible
         }
 
         // Deactivate the key object so it no longer interferes with the player

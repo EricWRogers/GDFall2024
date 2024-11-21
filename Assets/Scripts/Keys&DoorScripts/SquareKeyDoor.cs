@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Required for UI components
+using TMPro;
 
-public class Door : MonoBehaviour
+public class SquareKeyDoor : MonoBehaviour
 {
-    public KeyPickup playerKeyScript;  // Reference to the player's KeyPickup script
+    public SquareKey playerSquareKeyScript;  // Reference to the player's SquareKey script
     public GameObject doorObject;  // The door object itself (it can be a door model, etc.)
     public bool isDoorOpen = false;  // Whether the door is open or closed
-    public Text interactionText;  // Reference to the UI Text for interaction instructions
+    public TMP_Text interactionText;  // Reference to the UI Text for interaction instructions
     public float interactionRange = 3f;  // The distance at which the player can interact with the door
 
     private BoxCollider2D doorCollider;  // To hold reference to the door's 2D collider
@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
 
         if (interactionText != null)
         {
-            interactionText.text = "";  // Hide the text initially
+            interactionText.text = "Press E To Open Door";  // Hide the text initially
         }
     }
 
@@ -28,13 +28,13 @@ public class Door : MonoBehaviour
     {
         // Find the player object by tag and check the distance to the door
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null && playerKeyScript != null)
+        if (player != null && playerSquareKeyScript != null)
         {
             // Calculate the distance between the player and the door
             float distanceToDoor = Vector3.Distance(player.transform.position, transform.position);
 
-            // Check if the player is within range and has the key
-            if (distanceToDoor <= interactionRange && playerKeyScript.hasKey)
+            // Check if the player is within range and has the Square Key
+            if (distanceToDoor <= interactionRange && playerSquareKeyScript.hasSquareKey)
             {
                 // Show interaction prompt if within range and the player has the key
                 if (interactionText != null)
@@ -64,13 +64,13 @@ public class Door : MonoBehaviour
     {
         isDoorOpen = true;
         doorObject.SetActive(false);  // Deactivates the door object to simulate it being "opened"
-        Debug.Log("The door is now open.");
+        Debug.Log("The Square Key Door is now open.");
         
         // Remove the BoxCollider2D so the player can pass through the door
         if (doorCollider != null)
         {
             doorCollider.enabled = false;  // Disable the collider (removes physical interaction)
-            Debug.Log("The door's collider has been removed.");
+            Debug.Log("The Square Key Door's collider has been removed.");
         }
 
         // Hide the prompt after the door is opened
