@@ -13,12 +13,21 @@ public class KeyPickup : MonoBehaviour
 
     private GameObject player;  // Reference to the player GameObject
 
+    // New addition: Reference to the Image that will appear after the key is picked up
+    public Image keyImage;  
+
     private void Start()
     {
         // Initially, the player does not have the key
         if (pickupMessageText != null)
         {
             pickupMessageText.text = "";  // Hide any pickup message at the start
+        }
+
+        // Make sure the key image is hidden at the start
+        if (keyImage != null)
+        {
+            keyImage.enabled = false;  // Hide the key image initially
         }
 
         // Find the player in the scene
@@ -67,13 +76,13 @@ public class KeyPickup : MonoBehaviour
         // Update the message to show key picked up
         if (pickupMessageText != null)
         {
-            pickupMessageText.text = "Key picked up!";
+            pickupMessageText.text = "";
         }
 
-        // Hide the prompt after the door is opened
-        if (pickupMessageText != null)
+        // Show the key image in the UI
+        if (keyImage != null)
         {
-            pickupMessageText.text = "";
+            keyImage.enabled = true;  // Make the key image visible
         }
 
         // Deactivate the key object so it no longer interferes with the player
