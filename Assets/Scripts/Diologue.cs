@@ -14,6 +14,9 @@ public class Diologue : MonoBehaviour
 
     void OnEnable()
     {
+        Debug.Log("Enable"+index);
+        index = 0;
+        StopAllCoroutines();
         NextSentence();
     }
 
@@ -24,14 +27,16 @@ public class Diologue : MonoBehaviour
             if (!writing && index == sentences.Length)
             {
                 Debug.Log("shutdown dialogue");
+                writing = false;
                 dialogueText.text = "";
                 index = 0;
-                writing = false;
+                StopAllCoroutines();
                 transform.parent.gameObject.SetActive(false);
                 other.EndDialogue();
                 return;
             }
 
+            Debug.Log("Update");
             NextSentence();
         }
     }

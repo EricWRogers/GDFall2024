@@ -26,10 +26,15 @@ public class Interact : MonoBehaviour
         {
             SceneManager.LoadScene(scene);
         }
+        if (button.tag == "Quit")
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
     }
 
     public void EndDialogue()
     {
-        dialogueBox.SetActive(false);
+        //dialogueBox.SetActive(false);
     }
 }
