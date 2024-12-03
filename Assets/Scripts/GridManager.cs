@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public Sprite sprite;
+    
     public float[,] Grid;
     int vertical, horizontal, columns, rows;
     // Start is called before the first frame update
@@ -29,8 +29,6 @@ public class GridManager : MonoBehaviour
     {
         GameObject g = new GameObject("X: " + x + "Y: " + y);
         g.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
-        var s = g.AddComponent<SpriteRenderer>();
-        s.sprite = sprite;
-        s.color = new Color(value, value, value);
+        
     }
 }
