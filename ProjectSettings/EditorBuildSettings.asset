@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BasementLevel.unity
     guid: 061da5e1f20aad94e952cf10256331e4
+  - enabled: 1
+    path: Assets/Scenes/RandomKey.unity
+    guid: e562ce6d3466365429cfefbb5c2a0238
   m_configObjects: {}
