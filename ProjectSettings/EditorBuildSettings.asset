@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 361ab0a32c190f64e87f2fd7865b8a24
   - enabled: 1
-    path: Assets/Scenes/Cleo'sScene1.unity
+    path: Assets/Scenes/CS1.unity
     guid: f0c3dc2551a7da540807a7800449628e
   - enabled: 1
-    path: Assets/Scenes/Cleo'sScene2.unity
+    path: Assets/Scenes/CS2.unity
     guid: 20d7a7c5c72956d4e9fd94e8380aa515
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity

@@ -371,7 +371,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7945031347459016890, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_Name
-      value: SceneTransition
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323980296864606162, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: scene
+      value: CS1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -484,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7945031347459016890, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_Name
-      value: SceneTransition (1)
+      value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 8323980296864606162, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: scene
@@ -714,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7945031347459016890, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_Name
-      value: SceneTransition (2)
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 8323980296864606162, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: scene
