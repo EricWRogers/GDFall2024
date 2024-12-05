@@ -42,13 +42,13 @@ public class CursorClick : MonoBehaviour
         }
     }
 
-    // private void OnMouseEnter()
-    // {
-    //     Cursor.SetCursor(cursorHover, hotspot, CursorMode.Auto)
-    // }
+    void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursorHover, hotspot, CursorMode.Auto);
+    }
 
-    // private void OnMouseExit()
-    // {
-    //     Cursor.SetCursor(cursorNormal, hotspot, CursorMode.Auto);
-    // }
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(cursorNormal, hotspot, CursorMode.Auto);
+    }
 }
