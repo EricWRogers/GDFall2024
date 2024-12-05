@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Title Screen.unity
+    path: Assets/Scenes/TitleScreen.unity
     guid: 361ab0a32c190f64e87f2fd7865b8a24
   - enabled: 1
     path: Assets/Scenes/Cleo'sScene1.unity
