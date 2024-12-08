@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+/*public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -49,3 +49,4 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 }
+*/
