@@ -1,58 +1,75 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;  // For loading scenes
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelLoader : MonoBehaviour
 {
-    // Reference to the player and their KeyPickup script
-    public GameObject player;
+    private GameObject player;
     private KeyPickup playerKeyPickup;
-
-    // Name of the scene to load
+    public Animator transition;
+    public float transitionTime = 1f;
     public string BasementLevel;
-
-    // The distance at which the player can interact with the door
     public float interactionDistance = 3f;
 
     void Start()
     {
-        // Get the KeyPickup component from the player
-        playerKeyPickup = player.GetComponent<KeyPickup>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            playerKeyPickup = player.GetComponent<KeyPickup>();
+        }
+        else
+        {
+            Debug.LogWarning("Player object with 'Player' tag is not found in the scene.");
+        }
     }
 
     void Update()
     {
-        // Check if the player is close enough to the door
-        if (Vector3.Distance(player.transform.position, transform.position) < interactionDistance)
+        if (player != null && playerKeyPickup != null)
         {
-            // Show message to interact (you can use UI for this)
-            if (Input.GetKeyDown(KeyCode.E))
+            
+            if (Vector3.Distance(player.transform.position, transform.position) < interactionDistance)
             {
-                // Check if the player has the key
-                if (playerKeyPickup.hasKey)
+                
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("Player has the key! Loading the scene...");
-                    LoadLevel();
-                }
-                else
-                {
-                    Debug.Log("You need the key to open this door.");
-                    // Optionally, show a UI message that the player needs the key
+                    if (playerKeyPickup.hasKey)
+                    {
+                        Debug.Log("Player has the key! Loading the scene...");
+                        StartCoroutine(LoadLevel());
+                    }
+                    else
+                    {
+                        Debug.Log("You need the key to open this door.");
+                    }
                 }
             }
         }
     }
 
-    // Method to load the scene
-    private void LoadLevel()
+    private IEnumerator LoadLevel()
     {
-        if (!string.IsNullOrEmpty(BasementLevel))
+        if (transition != null)
         {
-            Debug.Log("Loading scene: " + BasementLevel);
-            SceneManager.LoadScene(BasementLevel);
+            if (!string.IsNullOrEmpty(BasementLevel))
+            {
+                // Trigger the transition animation
+                transition.SetTrigger("Start");
+                yield return new WaitForSeconds(transitionTime);
+
+                // Load the new scene after the animation finishes
+                SceneManager.LoadScene(BasementLevel);
+            }
+            else
+            {
+                Debug.LogWarning("Scene name is empty or invalid.");
+            }
         }
         else
         {
-            Debug.LogWarning("Scene name is empty or invalid.");
+            Debug.LogWarning("Transition Animator not assigned!");
         }
     }
 }
