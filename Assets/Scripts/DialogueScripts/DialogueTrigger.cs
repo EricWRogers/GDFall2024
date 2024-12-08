@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;  // Import the UI namespace to work with UI elements like Image
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -17,15 +18,45 @@ public class DialogueTrigger : MonoBehaviour
         "Press Space to continue the conversation."
     };
 
-    // Update is called once per frame
+    // Interaction indicator components
+    public Canvas interactionCanvas;  // Canvas to hold the interaction image
+    public Image interactIndicator;    // Reference to the Image component that will act as the indicator
+
+    private void Start()
+    {
+        // Ensure the interaction image is hidden at the start
+        if (interactionCanvas != null)
+        {
+            interactionCanvas.gameObject.SetActive(false);  // Hide canvas initially
+        }
+    }
+
     private void Update()
     {
         // Only trigger the dialogue if the player is within range
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))  // E is for starting dialogue
+        if (playerInRange)
         {
-            if (dialogueManager != null)
+            // Show the interaction indicator when player is in range
+            if (interactionCanvas != null)
             {
-                dialogueManager.StartDialogue(dialogueSentences);  // Start the dialogue when E is pressed
+                interactionCanvas.gameObject.SetActive(true);  // Show canvas
+            }
+
+            // Trigger the dialogue if "E" is pressed
+            if (Input.GetKeyDown(KeyCode.E))  // E is for starting dialogue
+            {
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(dialogueSentences);  // Start the dialogue when E is pressed
+                }
+            }
+        }
+        else
+        {
+            // Hide the interaction indicator when player is out of range
+            if (interactionCanvas != null)
+            {
+                interactionCanvas.gameObject.SetActive(false);  // Hide canvas
             }
         }
     }
@@ -36,6 +67,13 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;  // Player is within range
+            Debug.Log("Player entered interaction range.");
+
+            // Ensure the indicator is shown when entering the range
+            if (interactionCanvas != null)
+            {
+                interactionCanvas.gameObject.SetActive(true);  // Show canvas when the player enters range
+            }
         }
     }
 
@@ -45,6 +83,13 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;  // Player is no longer in range
+            Debug.Log("Player exited interaction range.");
+
+            // Ensure the indicator is hidden when exiting the range
+            if (interactionCanvas != null)
+            {
+                interactionCanvas.gameObject.SetActive(false);  // Hide canvas when the player exits range
+            }
         }
     }
 }
