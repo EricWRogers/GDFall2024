@@ -8,12 +8,10 @@ public class Interact : MonoBehaviour
     public string scene;
     public GameObject button;
     public GameObject dialogueBox;
+    public GameObject intheway;
+    public GameObject collectable;
+    public GameObject pointCounter;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void OnMouseDown() 
     { 
@@ -30,6 +28,18 @@ public class Interact : MonoBehaviour
         {
             Debug.Log("Quit");
             Application.Quit();
+        }
+        if (button.tag == "Intheway")
+        {
+            Debug.Log("Intheway");
+             intheway.SetActive(false);
+             collectable.SetActive(true);
+        }
+        if (button.tag == "Collectable")
+        {
+            collectable.SetActive(false);
+            
+
         }
     }
 

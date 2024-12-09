@@ -8,6 +8,8 @@ TagManager:
   - Clue
   - Move
   - Quit
+  - Intheway
+  - Collectable
   layers:
   - Default
   - TransparentFX
