@@ -468,7 +468,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.7588115
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -552,12 +552,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1351302816}
     m_Modifications:
     - target: {fileID: 125375312863150353, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7042426
+      objectReference: {fileID: 0}
+    - target: {fileID: 125375312863150353, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.58664525
+      objectReference: {fileID: 0}
+    - target: {fileID: 125375312863150353, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.181238
+      objectReference: {fileID: 0}
+    - target: {fileID: 125375312863150353, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -397.502
+      value: -399.73
       objectReference: {fileID: 0}
     - target: {fileID: 125375312863150353, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -224.996
+      value: -213.87
       objectReference: {fileID: 0}
     - target: {fileID: 5822334583485359244, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: m_Pivot.x
@@ -650,6 +662,14 @@ PrefabInstance:
     - target: {fileID: 8323980296864606162, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
       propertyPath: scene
       value: CS2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021613511153968366, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 31520b13723e32c488bffbdedb60e9ef, type: 3}
+    - target: {fileID: 9021613511153968366, guid: e81625261c567ea45bdd9c8541e166d7, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6848196118119887103, guid: d32b727ecba016b469aab6703cd7b877, type: 3}
       propertyPath: m_Sprite
@@ -763,23 +783,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 419058416164424276, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.21193615
+      value: 0.40312502
       objectReference: {fileID: 0}
     - target: {fileID: 419058416164424276, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.19961011
+      value: 0.3796796
       objectReference: {fileID: 0}
     - target: {fileID: 419058416164424276, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7340231
+      value: 3.2982957
       objectReference: {fileID: 0}
     - target: {fileID: 419058416164424276, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -403.208
+      value: -405.72
       objectReference: {fileID: 0}
     - target: {fileID: 419058416164424276, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -225.593
+      value: -215.19
       objectReference: {fileID: 0}
     - target: {fileID: 585964418446415426, guid: 0907e983271391e43b750cc8df0e66c5, type: 3}
       propertyPath: m_Size.x
@@ -1065,7 +1085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 226297072803176299, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 519752716045501251, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_Size.x
@@ -1121,23 +1141,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5022114159456505995, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3312954
+      value: 0.63015896
       objectReference: {fileID: 0}
     - target: {fileID: 5022114159456505995, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.29084915
+      value: 0.5532259
       objectReference: {fileID: 0}
     - target: {fileID: 5022114159456505995, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.141171
+      value: 5.97484
       objectReference: {fileID: 0}
     - target: {fileID: 5022114159456505995, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -400.075
+      value: -399.76
       objectReference: {fileID: 0}
     - target: {fileID: 5022114159456505995, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -224.772
+      value: -211.59
       objectReference: {fileID: 0}
     - target: {fileID: 6368003542304383300, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: m_Pivot.x
@@ -1244,33 +1264,42 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
+      propertyPath: dialogueSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[0]
-      value: You could smell it from your car.
+      value: You could smell it from your car. >>
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[1]
       value: The scent of iron carried on the wind mixing with that of the fresh
-        pine was...
+        pine was... >>
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[2]
-      value: interesting... to say the least.
+      value: interesting... >>
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[3]
       value: Judging by the frozen blood surrounding the corpse, the body isn't fresh.
+        >>
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[4]
-      value: This must have happened long before the body was discovered.
+      value: This must have happened long before the body was discovered. >>
       objectReference: {fileID: 0}
     - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
       propertyPath: sentences.Array.data[5]
-      value: You keep looking.
+      value: You need to find what did this. >>
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182168199581286250, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
+      propertyPath: sentences.Array.data[6]
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 6848196118119887103, guid: d32b727ecba016b469aab6703cd7b877, type: 3}
       propertyPath: m_Sprite
@@ -1289,7 +1318,8 @@ PrefabInstance:
       value: Clue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5949493331718734469, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91cab861a01c8b7418ceca614a29839a, type: 3}
