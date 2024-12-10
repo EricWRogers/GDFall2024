@@ -4,40 +4,37 @@ using UnityEngine;
 
 public class RandomKeys : MonoBehaviour
 {
-    
-    public Transform parentObject;
-
-    
-    public Vector2 positionRangeMin = new Vector2(-5, -5);
-    public Vector2 positionRangeMax = new Vector2(5, 5);
+    public Transform parentObject; 
+    public GridManager gridManager; 
 
     void Start()
     {
-        
         RandomizeAllPositions();
     }
 
     void RandomizeAllPositions()
     {
-        
         List<Transform> children = new List<Transform>();
 
-        
+        // Get all children of the parent object
         foreach (Transform child in parentObject)
         {
-            
             children.Add(child);
         }
 
-        
+        // Randomize positions of each child based on grid
         foreach (Transform child in children)
         {
-            
-            float randomX = Random.Range(positionRangeMin.x, positionRangeMax.x);
-            float randomY = Random.Range(positionRangeMin.y, positionRangeMax.y);
+            // Randomly select grid coordinates
+            int randomX = Random.Range(0, gridManager.columns); 
+            int randomY = Random.Range(0, gridManager.rows); 
 
             
-            child.position = new Vector3(randomX, randomY, child.position.z);
+            float xPos = randomX * gridManager.tileSize + gridManager.gridOffsetX;
+            float yPos = randomY * gridManager.tileSize + gridManager.gridOffsetY;
+
+            
+            child.position = new Vector3(xPos, yPos, child.position.z);
         }
     }
 }
