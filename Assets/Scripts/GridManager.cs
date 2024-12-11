@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    
     public float[,] Grid;
-    int vertical, horizontal, columns, rows;
-    // Start is called before the first frame update
+    public int columns = 10; 
+    public int rows = 10;    
+    public float tileSize = 1.0f; 
+
+    // the starting position of the grid
+    public float gridOffsetX = 2f; 
+    public float gridOffsetY = 3f; 
+
     void Start()
     {
-        vertical = (int)Camera.main.orthographicSize;
-        horizontal = vertical * (Screen.width / Screen.height);
-        columns = horizontal * 2;
-        rows = vertical * 2;
+        // Initialize the grid 
         Grid = new float[columns, rows];
+
+        // Populate the grid with random values and spawn the tiles
         for (int i = 0; i < columns; i++)
         {
             for (int j = 0; j < rows; j++)
@@ -27,8 +31,11 @@ public class GridManager : MonoBehaviour
 
     private void SpawnTile(int x, int y, float value)
     {
-        GameObject g = new GameObject("X: " + x + "Y: " + y);
-        g.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
         
+        GameObject g = new GameObject("X: " + x + " Y: " + y);
+
+        
+        g.transform.position = new Vector3(x * tileSize + gridOffsetX, y * tileSize + gridOffsetY, 0);
+
     }
 }

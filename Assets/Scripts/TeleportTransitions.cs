@@ -1,64 +1,67 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;  
 
 public class TeleportTransitions : MonoBehaviour
 {
-    public Animator transitionAnimator;  
-    public string fadeOutTrigger = "Crossfade_"; 
-    public string fadeInTrigger = "Crossfade_start"; 
-    public float fadeDuration = 1f; 
+    public Image fadeImage;  
+    public float fadeOutDuration = 1f;  
+    public float fadeInDuration = 1f;  
+    public float fadeLingerDuration = 2f;   
 
-    private void Start()
+    void Start()
     {
         
-        if (transitionAnimator == null)
+        Color startColor = fadeImage.color;
+        startColor.a = 0f;  
+        fadeImage.color = startColor;
+    }
+
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        FadeOut();  
+
+        
+        Invoke("LingerAndFadeIn", fadeLingerDuration);  
+    }
+
+    
+    private void LingerAndFadeIn()
+    {
+        FadeIn();  
+    }
+
+    
+    public void FadeIn()
+    {
+        StartCoroutine(FadeTo(0f, fadeInDuration)); 
+    }
+
+   
+    public void FadeOut()
+    {
+        StartCoroutine(FadeTo(1f, fadeOutDuration)); 
+    }
+
+    private IEnumerator FadeTo(float targetAlpha, float duration)
+    {
+      
+        float startAlpha = fadeImage.color.a;
+        float elapsedTime = 0f;
+
+        
+        while (elapsedTime < duration)
         {
-            Debug.LogError("Animator not assigned to TeleportAnimationTrigger.");
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
+            Color newColor = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, alpha);
+            fadeImage.color = newColor;
+            yield return null;
         }
-    }
-
-    
-    public void TriggerTeleportAnimation(System.Action onTeleportComplete)
-    {
-        
-        TriggerFadeOutAnimation();
 
         
-        StartCoroutine(WaitAndTeleport(onTeleportComplete));
-    }
-
-    
-    private void TriggerFadeOutAnimation()
-    {
-        if (transitionAnimator != null)
-        {
-            transitionAnimator.SetTrigger(fadeOutTrigger);  
-        }
-    }
-
-    
-    private IEnumerator WaitAndTeleport(System.Action onTeleportComplete)
-    {
-        
-        yield return new WaitForSeconds(fadeDuration);
-
-        
-        onTeleportComplete?.Invoke();  
-
-        
-        yield return new WaitForSeconds(0.2f); 
-
-        
-        TriggerFadeInAnimation();
-    }
-
-    
-    private void TriggerFadeInAnimation()
-    {
-        if (transitionAnimator != null)
-        {
-            transitionAnimator.SetTrigger(fadeInTrigger); 
-        }
+        Color finalColor = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, targetAlpha);
+        fadeImage.color = finalColor;
     }
 }
