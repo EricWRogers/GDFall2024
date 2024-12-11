@@ -5,18 +5,19 @@ using System.Collections;
 public class LevelLoader : MonoBehaviour
 {
     private GameObject player;
-    private KeyPickup playerKeyPickup;
+    private KeyPickup playerKeyPickup;  
     public Animator transition;
     public float transitionTime = 1f;
-    public string BasementLevel;
-    public float interactionDistance = 3f;
+    public string Level;
 
     void Start()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {
+            
             playerKeyPickup = player.GetComponent<KeyPickup>();
         }
         else
@@ -25,42 +26,48 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (player != null && playerKeyPickup != null)
+        
+        if (other.CompareTag("Player"))
         {
             
-            if (Vector3.Distance(player.transform.position, transform.position) < interactionDistance)
+            Debug.Log("Player entered trigger, hasKey: " + (playerKeyPickup != null ? playerKeyPickup.hasKey.ToString() : "null"));
+
+            if (playerKeyPickup != null && playerKeyPickup.hasKey)
+            {
+                // If the player has the key, start the scene transition
+                Debug.Log("Player has the key! Starting the scene transition...");
+                StartCoroutine(LoadLevel());
+            }
+            else
             {
                 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (playerKeyPickup.hasKey)
-                    {
-                        Debug.Log("Player has the key! Loading the scene...");
-                        StartCoroutine(LoadLevel());
-                    }
-                    else
-                    {
-                        Debug.Log("You need the key to open this door.");
-                    }
-                }
+                Debug.Log("You need the key to open this door.");
             }
         }
     }
 
     private IEnumerator LoadLevel()
     {
-        if (transition != null)
+        // Check if transition is assigned and the player has the key
+        if (transition != null && playerKeyPickup != null && playerKeyPickup.hasKey)
         {
-            if (!string.IsNullOrEmpty(BasementLevel))
-            {
-                // Trigger the transition animation
-                transition.SetTrigger("Start");
-                yield return new WaitForSeconds(transitionTime);
+            
+            transition.SetTrigger("Start");
 
-                // Load the new scene after the animation finishes
-                SceneManager.LoadScene(BasementLevel);
+            
+            yield return new WaitForSeconds(transitionTime);
+
+            if (!string.IsNullOrEmpty(Level))
+            {
+                AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(Level);
+
+                
+                while (!sceneLoad.isDone)
+                {
+                    yield return null;
+                }
             }
             else
             {
@@ -69,7 +76,7 @@ public class LevelLoader : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Transition Animator not assigned!");
+            Debug.LogWarning("Transition Animator not assigned or player doesn't have the key.");
         }
     }
 }
