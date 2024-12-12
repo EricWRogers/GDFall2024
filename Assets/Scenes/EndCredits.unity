@@ -4799,7 +4799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426b9f43abdb7a141a559da5411ba0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToTeleport: 35
+  timeToTeleport: 29
 --- !u!4 &1975791898
 Transform:
   m_ObjectHideFlags: 0
