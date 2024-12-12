@@ -4,51 +4,54 @@ using UnityEngine;
 
 public class CursorClick : MonoBehaviour
 {
-    public Texture2D cursorNormal;
-    public Texture2D cursorHover;
-    public Vector2 hotspot = new Vector2(16, 16);
-    public float detectionRadius = 2f;
+    public Texture2D defaultCursor;
+    public Texture2D interactCursor;
+    public float interactionDistance = 3f;
 
-    private GameObject player;
-    private bool isPlayerNearby = false;
+    private Camera mainCamera;
+    private GameObject currentInteractable;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        mainCamera = Camera.main;
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     void Update()
     {
-        if (player != null)
-        {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-            if (distanceToPlayer <= detectionRadius)
+        if (hit.collider != null)
+        {
+            GameObject hoveredObject = hit.collider.gameObject;
+
+            CursorClick cursorClick = hoveredObject.GetComponent<CursorClick>();
+            if (cursorClick != null && Vector2.Distance(hoveredObject.transform.position, transform.position) <= interactionDistance)
             {
-                if(!isPlayerNearby)
+                if (currentInteractable != hoveredObject)
                 {
-                    isPlayerNearby = true;
-                    Cursor.SetCursor(cursorHover, hotspot, CursorMode.Auto);
+                    currentInteractable = hoveredObject;
+                    Cursor.SetCursor(interactCursor, Vector2.zero, CursorMode.Auto);
                 }
+            }
+            else
+            {
+                ResetCursor();
             }
         }
         else
         {
-            if (isPlayerNearby)
-            {
-                isPlayerNearby = false;
-                Cursor.SetCursor(cursorNormal, hotspot, CursorMode.Auto);
-            }
+            ResetCursor();
         }
     }
 
-    void OnMouseEnter()
+    void ResetCursor()
     {
-        Cursor.SetCursor(cursorHover, hotspot, CursorMode.Auto);
-    }
-
-    void OnMouseExit()
-    {
-        Cursor.SetCursor(cursorNormal, hotspot, CursorMode.Auto);
+        if (currentInteractable != null)
+        {
+            currentInteractable = null;
+            Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+        }
     }
 }

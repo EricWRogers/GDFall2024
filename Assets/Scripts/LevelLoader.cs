@@ -2,81 +2,47 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class LevelLoader : MonoBehaviour
+public class SceneTeleport : MonoBehaviour
 {
-    private GameObject player;
-    private KeyPickup playerKeyPickup;  
-    public Animator transition;
-    public float transitionTime = 1f;
-    public string Level;
+    // The scene index of the next scene. Set this to the index of the next scene in your build settings.
+    public int nextSceneIndex = 1;
 
-    void Start()
-    {
-        
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player != null)
-        {
-            
-            playerKeyPickup = player.GetComponent<KeyPickup>();
-        }
-        else
-        {
-            Debug.LogWarning("Player object with 'Player' tag is not found in the scene.");
-        }
-    }
-
+    // Trigger detection when player enters the range
     private void OnTriggerEnter(Collider other)
     {
-        
+        // Check if the object that entered the trigger is the player
         if (other.CompareTag("Player"))
         {
-            
-            Debug.Log("Player entered trigger, hasKey: " + (playerKeyPickup != null ? playerKeyPickup.hasKey.ToString() : "null"));
-
-            if (playerKeyPickup != null && playerKeyPickup.hasKey)
-            {
-                // If the player has the key, start the scene transition
-                Debug.Log("Player has the key! Starting the scene transition...");
-                StartCoroutine(LoadLevel());
-            }
-            else
-            {
-                
-                Debug.Log("You need the key to open this door.");
-            }
+            // Start the scene transition
+            StartCoroutine(LoadNextScene());
         }
     }
 
-    private IEnumerator LoadLevel()
+    // Coroutine that handles loading the next scene
+    private IEnumerator LoadNextScene()
     {
-        // Check if transition is assigned and the player has the key
-        if (transition != null && playerKeyPickup != null && playerKeyPickup.hasKey)
+        // Optionally, you can add some transition effects here if you like (e.g., fade out)
+
+        // Wait for a short time if you want to add delay before loading the next scene
+        yield return new WaitForSeconds(1f);  // Delay can be adjusted or removed
+
+        // Make sure the scene index is valid
+        if (nextSceneIndex >= 0 && nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            
-            transition.SetTrigger("Start");
+            Debug.Log("Loading scene with index: " + nextSceneIndex);
+            AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(nextSceneIndex);
 
-            
-            yield return new WaitForSeconds(transitionTime);
-
-            if (!string.IsNullOrEmpty(Level))
+            // Wait until the scene is fully loaded
+            while (!sceneLoad.isDone)
             {
-                AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(Level);
+                yield return null;
+            }
 
-                
-                while (!sceneLoad.isDone)
-                {
-                    yield return null;
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Scene name is empty or invalid.");
-            }
+            Debug.Log("Scene loaded successfully.");
         }
         else
         {
-            Debug.LogWarning("Transition Animator not assigned or player doesn't have the key.");
+            Debug.LogError("Invalid scene index: " + nextSceneIndex);
         }
     }
 }
