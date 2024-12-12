@@ -12,14 +12,14 @@ public class CircleKey : MonoBehaviour
     public float pickupRange = 3f;  // The distance at which the player can pick up the key
 
     // New addition: Reference to the Image that will appear after the key is picked up
-    public Image circleKeyImage;
+    public Image circleKeyImage;  
 
     private GameObject player;  // Reference to the player GameObject
 
     void Awake()
     {
         // Ensure this GameObject persists across scenes
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // If the key has already been picked up in the previous scene, we want to keep the state
         if (hasCircleKey && circleKeyImage != null)

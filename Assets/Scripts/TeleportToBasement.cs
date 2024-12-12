@@ -28,7 +28,7 @@ public class TeleportToBasement : MonoBehaviour
 
             if (transitionAnimator != null)
             {
-                StartCoroutine(FadeOutAndLoadScene("BasementLevel"));
+                StartCoroutine(FadeOutAndLoadScene("BasementLevel2"));
             }
         }
     }
