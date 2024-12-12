@@ -13,9 +13,11 @@ public class DialogueTrigger : MonoBehaviour
     // Define the dialogue sentences here
     private List<string> dialogueSentences = new List<string>
     {
-        "Hello, welcome to this world!",
-        "This is a simple dialogue system.",
-        "Press Space to continue the conversation."
+        "Listen we don't have much time!",
+        "She'll be here any second.",
+        "The lady of this house has hidden keys around the room.",
+        "There are 3 different keys you need to find!",
+        "I need you to let me out so we can escape",
     };
 
     // Interaction indicator components
