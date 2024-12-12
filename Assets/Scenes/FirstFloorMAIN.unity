@@ -2772,14 +2772,6 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8097533373322599013, guid: 4b6d5e77aed907b4e810704974c8e86c, type: 3}
-      propertyPath: m_Size.y
-      value: 6.6524315
-      objectReference: {fileID: 0}
-    - target: {fileID: 8097533373322599013, guid: 4b6d5e77aed907b4e810704974c8e86c, type: 3}
-      propertyPath: m_Offset.y
-      value: 3.207777
-      objectReference: {fileID: 0}
     - target: {fileID: 8509975350540775616, guid: 4b6d5e77aed907b4e810704974c8e86c, type: 3}
       propertyPath: m_Name
       value: Lady_Standing_1
