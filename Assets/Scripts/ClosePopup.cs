@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickImagePopup : MonoBehaviour
+public class ClosePopup : MonoBehaviour
 {
     public GameObject popupImage;
     public GameObject closeButton;
 
-    void OnMouseDown()
+    public void CloseImage()
     {
         if (popupImage != null)
         {
-            popupImage.SetActive(true);
+            popupImage.SetActive(false);
         }
 
         if (closeButton != null)
         {
-            closeButton.SetActive(true); 
+            closeButton.SetActive(false); // Hide the button
         }
     }
 }
